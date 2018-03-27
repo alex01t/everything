@@ -10,11 +10,16 @@ alias gd='git diff'
 alias ga='git add'
 alias gm='git commit -m '
 alias gc='git checkout'
-alias k='kubectl --namespace=$NS'
+alias k='kubectl --namespace=$ns'
+alias uv042='ssh -p2222 root@uv042.com'
 
-alias crt='openssl x509 -text -noout'
 alias csr='openssl req -text -noout'
 alias vm-minikube='ssh docker@192.168.99.100 -i ~/.minikube/machines/minikube/id_rsa'
+
+function crt(){
+	sed 's/^\s*//g' | openssl x509 -text -noout
+}
+export crt
 
 source <(kubectl completion bash)
 
