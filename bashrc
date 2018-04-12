@@ -1,10 +1,13 @@
 
 export PATH=$PATH:/home/alex/GoLand-2017.3.2/bin
+export PATH=$PATH:/home/alex/pycharm-community-2018.1/bin
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=/home/alex/go
 
 alias g='grep -r --color'
 alias d=docker
+alias gb='git branch'
+alias gp='git pull'
 alias gs='git status'
 alias gd='git diff'
 alias ga='git add'
@@ -12,6 +15,7 @@ alias gm='git commit -m '
 alias gc='git checkout'
 alias k='kubectl --namespace=$ns'
 alias uv042='ssh -p2222 root@uv042.com'
+alias 2222='ssh -p2222 localhost'
 
 alias csr='openssl req -text -noout'
 alias vm-minikube='ssh docker@192.168.99.100 -i ~/.minikube/machines/minikube/id_rsa'
@@ -20,6 +24,7 @@ function crt(){
 	sed 's/^\s*//g' | openssl x509 -text -noout
 }
 export crt
+alias crl='openssl crl -inform DER -text -noout'
 
 source <(kubectl completion bash)
 
