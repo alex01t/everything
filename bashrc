@@ -1,8 +1,9 @@
 
+export GOPATH=/home/alex/go
 export PATH=$PATH:/home/alex/GoLand-2017.3.2/bin
 export PATH=$PATH:/home/alex/pycharm-community-2018.1/bin
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=/home/alex/go
+export PATH=$PATH:$GOPATH/bin
 
 alias g='grep -r --color'
 alias d=docker
@@ -17,9 +18,12 @@ alias k='kubectl --namespace=$ns'
 alias uv042='ssh -p2222 root@uv042.com'
 alias 2222='ssh -p2222 localhost'
 
-alias csr='openssl req -text -noout'
 alias vm-minikube='ssh docker@192.168.99.100 -i ~/.minikube/machines/minikube/id_rsa'
 
+function csr(){
+	sed 's/^\s*//g' | openssl req -text -noout
+}
+export csr
 function crt(){
 	sed 's/^\s*//g' | openssl x509 -text -noout
 }
@@ -34,7 +38,8 @@ function o() {
 	[ x == x$1 ] && exit 1
 	LIST="`find . -type f -name "*$1*" | sort `"
 	if [ x"$LIST" == x ]; then
-	    echo Nothing found; exit 0
+	    echo Nothing found
+            return
 	fi
 	FIRST=`echo "$LIST" | head -1`
 	echo "$LIST" | grep --color "$1"
