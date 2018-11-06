@@ -1,12 +1,19 @@
+export PS1='\[\e]0;@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
-export GOPATH=/home/alex/go
-export PATH=$PATH:/home/alex/GoLand-2017.3.2/bin
-export PATH=$PATH:/home/alex/pycharm-community-2018.1/bin
+export PATH=/home/atarasenko/azul/phabricator-integration/p4-phabricator/arcanist/bin:$PATH
+export GOPATH=/home/atarasenko/go
+export PATH=$PATH:/home/atarasenko/pycharm-2018.2.4/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=~/.local/bin:$PATH
-complete -C '/home/alex/.local/bin/aws_completer' aws
+export PATH=~/bloc/0/fabric-samples/bin:$PATH
+export PATH=~/.npm/bin:$PATH
+complete -C '/home/atarasenko/.local/bin/aws_completer' aws
 
+export PATH=~/azul/p4v-2018.2.1687764/bin:$PATH
+export P4CONFIG=/home/atarasenko/P4CONFIG
+
+alias p=p4
 alias g='grep -r --color'
 alias d=docker
 alias v=vagrant
@@ -18,12 +25,14 @@ alias ga='git add'
 alias gm='git commit -m '
 alias gc='git checkout'
 alias k='kubectl --namespace=$ns'
+alias ap=ansible-playbook
 alias uv042='ssh -p2222 root@uv042.com'
 alias 2222='ssh -p2222 localhost'
-alias jnode-vcert='ssh root@localhost -p5005'
-
-alias amtel='ssh -p 20201 soft@195.208.201.138'
-# alias aws='ssh 52.15.233.8'
+alias jvcert='ssh root@localhost -p5005'
+alias jminikube='ssh root@localhost -p5006'
+alias bb='ssh atarasenko@buildbot'
+alias dev='ssh atarasenko@devastator'
+alias dem='ssh atarasenko@demiurge'
 
 alias vm-minikube='ssh docker@192.168.99.100 -i ~/.minikube/machines/minikube/id_rsa'
 
@@ -36,8 +45,9 @@ function crt(){
 }
 export crt
 alias crl='openssl crl -inform DER -text -noout'
+alias p12='openssl pkcs12 -nodes'
 
-source <(kubectl completion bash)
+# source <(kubectl completion bash)
 
 echo 'minikube-s docker: eval $(minikube docker-env)'
 
