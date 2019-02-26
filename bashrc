@@ -13,9 +13,14 @@ complete -C '/home/atarasenko/.local/bin/aws_completer' aws
 export PATH=~/azul/p4v-2018.2.1687764/bin:$PATH
 export P4CONFIG=/home/atarasenko/P4CONFIG
 
+alias jenkins='sudo -u jenkins -i'
+
+alias ec2='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ~/.ssh/buildbot.pem -l ec2-user'
 alias p=p4
 alias g='grep -r --color'
 alias d=docker
+alias dc=docker-compose
+alias dr='docker run -it --rm'
 alias v=vagrant
 alias gb='git branch'
 alias gp='git pull'
@@ -23,6 +28,7 @@ alias gs='git status'
 alias gd='git diff'
 alias ga='git add'
 alias gm='git commit -m '
+alias gl='git log --graph --decorate --all'
 alias gc='git checkout'
 alias k='kubectl --namespace=$ns'
 alias ap=ansible-playbook
@@ -33,6 +39,7 @@ alias jminikube='ssh root@localhost -p5006'
 alias bb='ssh atarasenko@buildbot'
 alias dev='ssh atarasenko@devastator'
 alias dem='ssh atarasenko@demiurge'
+alias p4v='nohup ~/Downloads/p4v-2018.3.1719707/bin/p4v &'
 
 alias vm-minikube='ssh docker@192.168.99.100 -i ~/.minikube/machines/minikube/id_rsa'
 
@@ -49,7 +56,7 @@ alias p12='openssl pkcs12 -nodes'
 
 # source <(kubectl completion bash)
 
-echo 'minikube-s docker: eval $(minikube docker-env)'
+# echo 'minikube-s docker: eval $(minikube docker-env)'
 
 function o() {
 	[ x == x$1 ] && exit 1
